@@ -1,0 +1,14 @@
+C:\Users\user\AbcBestAlgorythm\AbcBestAlgorythm\bin\Debug\netcoreapp3.1\AbcBestAlgorythm.exe
+C:\Users\user\AbcBestAlgorythm\AbcBestAlgorythm\bin\Debug\netcoreapp3.1\AbcBestAlgorythm.deps.json
+C:\Users\user\AbcBestAlgorythm\AbcBestAlgorythm\bin\Debug\netcoreapp3.1\AbcBestAlgorythm.runtimeconfig.json
+C:\Users\user\AbcBestAlgorythm\AbcBestAlgorythm\bin\Debug\netcoreapp3.1\AbcBestAlgorythm.runtimeconfig.dev.json
+C:\Users\user\AbcBestAlgorythm\AbcBestAlgorythm\bin\Debug\netcoreapp3.1\AbcBestAlgorythm.dll
+C:\Users\user\AbcBestAlgorythm\AbcBestAlgorythm\bin\Debug\netcoreapp3.1\AbcBestAlgorythm.pdb
+C:\Users\user\AbcBestAlgorythm\AbcBestAlgorythm\obj\Debug\netcoreapp3.1\AbcBestAlgorythm.csproj.AssemblyReference.cache
+C:\Users\user\AbcBestAlgorythm\AbcBestAlgorythm\obj\Debug\netcoreapp3.1\AbcBestAlgorythm.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\AbcBestAlgorythm\AbcBestAlgorythm\obj\Debug\netcoreapp3.1\AbcBestAlgorythm.AssemblyInfoInputs.cache
+C:\Users\user\AbcBestAlgorythm\AbcBestAlgorythm\obj\Debug\netcoreapp3.1\AbcBestAlgorythm.AssemblyInfo.cs
+C:\Users\user\AbcBestAlgorythm\AbcBestAlgorythm\obj\Debug\netcoreapp3.1\AbcBestAlgorythm.csproj.CoreCompileInputs.cache
+C:\Users\user\AbcBestAlgorythm\AbcBestAlgorythm\obj\Debug\netcoreapp3.1\AbcBestAlgorythm.dll
+C:\Users\user\AbcBestAlgorythm\AbcBestAlgorythm\obj\Debug\netcoreapp3.1\AbcBestAlgorythm.pdb
+C:\Users\user\AbcBestAlgorythm\AbcBestAlgorythm\obj\Debug\netcoreapp3.1\AbcBestAlgorythm.genruntimeconfig.cache
