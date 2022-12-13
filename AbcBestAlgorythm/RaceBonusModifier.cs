@@ -1,81 +1,122 @@
-﻿namespace AbcBestAlgorythm
+﻿using System.Collections.Generic;
+
+namespace AbcBestAlgorythm
 {
     public class RaceBonusModifier
     {
-        public static (int CountForBonus, float Bonus) GetValue(int count, Race race)
-        {
-            switch (race)
+        public static readonly Dictionary<Race, BonusModifierData> RaceBonusModifiers =
+            new Dictionary<Race, BonusModifierData>
             {
-                case Race.Beast:
                 {
-                    if (count >= 4) return (4, 1.26f);
-                    if (count == 3) return (3, 1.14f);
-                    if (count == 2) return (2, 1.07f);
-                    return (1, 1);
-                }
-                case Race.Demon:
+                    Race.Beast, new BonusModifierData(new[]
+                    {
+                        new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
+                        new BonusModifierItem {Characters = 2, Level = 1, Modifier = 1.07f},
+                        new BonusModifierItem {Characters = 3, Level = 2, Modifier = 1.14f},
+                        new BonusModifierItem {Characters = 4, Level = 3, Modifier = 1.26f},
+                    })
+                },
                 {
-                    if (count >= 4) return (4, 1.22f);
-                    if (count >= 2) return (2, 1.11f);
-                    return (1, 1);
-                }
-                case Race.Drifter:
+                    Race.Demon, new BonusModifierData(new[]
+                    {
+                        new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
+                        new BonusModifierItem {Characters = 2, Level = 1, Modifier = 1.11f},
+                        new BonusModifierItem {Characters = 4, Level = 2, Modifier = 1.22f},
+                    })
+                },
                 {
-                    if (count >= 4) return (4, 1.25f);
-                    if (count == 3) return (3, 1.15f);
-                    if (count == 2) return (2, 1.1f);
-                    return (1, 1);
-                }
-                case Race.Elemental:
+                    Race.Drifter, new BonusModifierData(new[]
+                    {
+                        new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
+                        new BonusModifierItem {Characters = 2, Level = 1, Modifier = 1.1f},
+                        new BonusModifierItem {Characters = 3, Level = 2, Modifier = 1.15f},
+                        new BonusModifierItem {Characters = 4, Level = 3, Modifier = 1.25f},
+                    })
+                },
                 {
-                    if (count == 3) return (3, 1.25f);
-                    return (1, 1);
-                }
-                case Race.Elf:
+                    Race.Elemental, new BonusModifierData(new[]
+                    {
+                        new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
+                        new BonusModifierItem {Characters = 3, Level = 1, Modifier = 1.25f},
+                    })
+                },
                 {
-                    if (count >= 3) return (3, 1.26f);
-                    if (count == 2) return (2, 1.16f);
-                    return (1, 1);
-                }
-                case Race.Empire:
+                    Race.Elf, new BonusModifierData(new[]
+                    {
+                        new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
+                        new BonusModifierItem {Characters = 2, Level = 1, Modifier = 1.16f},
+                        new BonusModifierItem {Characters = 3, Level = 2, Modifier = 1.26f},
+                    })
+                },
                 {
-                    if (count >= 4) return (4, 1.22f);
-                    if (count >= 2) return (2, 1.088f);
-                    return (1, 1);
-                }
-                case Race.Gnome:
+                    Race.Empire, new BonusModifierData(new[]
+                    {
+                        new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
+                        new BonusModifierItem {Characters = 2, Level = 1, Modifier = 1.088f},
+                        new BonusModifierItem {Characters = 4, Level = 2, Modifier = 1.22f},
+                    })
+                },
                 {
-                    if (count >= 4) return (4, 1.28f);
-                    if (count >= 2) return (2, 1.14f);
-                    return (1, 1);
-                }
-                case Race.Plant:
+                    Race.Gnome, new BonusModifierData(new[]
+                    {
+                        new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
+                        new BonusModifierItem {Characters = 2, Level = 1, Modifier = 1.14f},
+                        new BonusModifierItem {Characters = 4, Level = 2, Modifier = 1.28f},
+                    })
+                },
                 {
-                    if (count >= 3) return (3, 1.26f);
-                    if (count == 2) return (2, 1.12f);
-                    return (1, 1);
-                }
-                case Race.Reptile:
+                    Race.Plant, new BonusModifierData(new[]
+                    {
+                        new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
+                        new BonusModifierItem {Characters = 2, Level = 1, Modifier = 1.12f},
+                        new BonusModifierItem {Characters = 3, Level = 2, Modifier = 1.26f},
+                    })
+                },
                 {
-                    if (count >= 4) return (4, 1.8f);
-                    if (count >= 2) return (2, 1.2f);
-                    return (1, 1);
-                }
-                case Race.Tribe:
+                    Race.Reptile, new BonusModifierData(new[]
+                    {
+                        new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
+                        new BonusModifierItem {Characters = 2, Level = 1, Modifier = 1.2f},
+                        new BonusModifierItem {Characters = 4, Level = 2, Modifier = 1.8f},
+                    })
+                },
                 {
-                    if (count >= 3) return (3, 1.7f);
-                    if (count == 2) return (2, 1.4f);
-                    return (1, 1);
-                }
-                case Race.Undead:
+                    Race.Tribe, new BonusModifierData(new[]
+                    {
+                        new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
+                        new BonusModifierItem {Characters = 2, Level = 1, Modifier = 1.4f},
+                        new BonusModifierItem {Characters = 3, Level = 2, Modifier = 1.7f},
+                    })
+                },
                 {
-                    if (count >= 4) return (4, 1.30f);
-                    if (count >= 2) return (2, 1.125f);
-                    return (1, 1);
-                }
-                default:
-                    return (1, 1);
+                    Race.Undead, new BonusModifierData(new[]
+                    {
+                        new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
+                        new BonusModifierItem {Characters = 2, Level = 1, Modifier = 1.125f},
+                        new BonusModifierItem {Characters = 4, Level = 2, Modifier = 1.3f},
+                    })
+                },
+            };
+        
+        public static BonusModifierItem GetValue(int count, Race race)
+        {
+            return RaceBonusModifiers[race].GetItem(count);
+        }
+
+        public static bool TryGetNextLevel(int currentCharacterCount, Race race, out BonusModifierItem item)
+        {
+            var data = RaceBonusModifiers[race];
+            var currentItem = data.GetItem(currentCharacterCount);
+            var nextItem  = data.GetItemByLevel(currentItem.Level + 1);
+            
+            if (currentItem.Level == nextItem.Level)
+            {
+                item = currentItem;
+                return false;
             }
+            
+            item = nextItem;
+            return true;
         }
     }
 }
