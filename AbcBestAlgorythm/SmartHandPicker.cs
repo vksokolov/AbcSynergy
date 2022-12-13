@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AbcBestAlgorythm
@@ -27,16 +28,20 @@ namespace AbcBestAlgorythm
                 Dictionary<Race, int> charactersForNextLevelByRace = new Dictionary<Race, int>();
                 
                 // Class
+                var hand1 = hand;
+                var delta1 = delta;
                 Deck.AllClassValues
                     .ForEach(@class =>
                     {
-                        int currentCharactersOfThisClass = hand.ClassCount[@class].CharactersInDeck;
+                        int currentCharactersOfThisClass = hand1.ClassCount[@class].CharactersInDeck;
                         if (ClassBonusModifier.TryGetNextLevel(currentCharactersOfThisClass, @class, out var item))
                         {
                             var foundDelta = item.Characters - currentCharactersOfThisClass;
-                            if (foundDelta <= delta)
+                            if (foundDelta <= delta1)
                                 charactersForNextLevelByClass.Add(@class, foundDelta);
                         }
+                        else
+                            charactersForNextLevelByClass.Add(@class, 1);
                     });
                 foreach (var (@class, count) in charactersForNextLevelByClass)
                 {
@@ -48,21 +53,25 @@ namespace AbcBestAlgorythm
 
                 
                 // Race
+                var hand2 = hand;
+                var delta2 = delta;
                 Deck.AllRaceValues
                     .ForEach(race =>
                     {
-                        int currentCharactersOfThisRace = hand.RaceCount[race].CharactersInDeck;
+                        int currentCharactersOfThisRace = hand2.RaceCount[race].CharactersInDeck;
                         if (RaceBonusModifier.TryGetNextLevel(currentCharactersOfThisRace, race, out var item))
                         {
                             var foundDelta = item.Characters - currentCharactersOfThisRace;
-                            if (foundDelta <= delta)
+                            if (foundDelta <= delta2)
                                 charactersForNextLevelByRace.Add(race, foundDelta);
                         }
+                        else
+                            charactersForNextLevelByRace.Add(race, 1);
                     });
                 
                 foreach (var (race, count) in charactersForNextLevelByRace)
                 {
-                    var replaced = ReplaceCharactersWithSpecialRace(hand, deck, race, count);
+                    var replaced = ReplaceCharactersWithSpecialRace(hand, deck, race, count, 3-depth);
                     if (depth > 1)
                         replaced = FindNearestBonuses(replaced, deck, steps, depth - 1);
                     newDecks.Add(replaced);
@@ -109,7 +118,7 @@ namespace AbcBestAlgorythm
             return new Deck(newHand);
         }
         
-        private static Deck ReplaceCharactersWithSpecialRace(Deck hand, Deck deck, Race targetRace, int count)
+        private static Deck ReplaceCharactersWithSpecialRace(Deck hand, Deck deck, Race targetRace, int count, int logIndentLevel = 0)
         {
             var newCharacters = 
                 deck
@@ -132,6 +141,17 @@ namespace AbcBestAlgorythm
                 .OrderByDescending(c => c.Might)
                 .ToHashSet();
             
+            //if (targetRace == Race.Reptile)
+            //{
+            //    var indent = new string('\t', logIndentLevel);
+            //    var log = indent + "Replacing:\n";
+            //    charactersToReplace.ToList().ForEach(c => log += indent + $"{c.Class}/{c.Race} {c.Might}\n");
+            //    log += indent + "With:\n";
+            //    newCharacters.ToList().ForEach(c => log += indent + $"{c.Class}/{c.Race} {c.Might}\n");
+            //    log += indent + "New hand:\n";
+            //    log += indent + new Deck(newHand);
+            //    Console.WriteLine(log);
+            //}
             return new Deck(newHand);
         }
     }
