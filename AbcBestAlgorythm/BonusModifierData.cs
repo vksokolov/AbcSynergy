@@ -19,11 +19,11 @@ namespace AbcBestAlgorythm
                 return _bonusModifiers[^1];
             if (characters < 2)
                 return _bonusModifiers[0];
-            
-            for(int i=0;i<_bonusModifiers.Length;i++)
+
+            for (var i = 0; i < _bonusModifiers.Length; i++)
             {
                 if (_bonusModifiers[i].Characters > characters)
-                    return _bonusModifiers[i-1];
+                    return _bonusModifiers[i - 1];
             }
 
             return _bonusModifiers[0];
