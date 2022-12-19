@@ -83,5 +83,10 @@ namespace AbcBestAlgorythm
             });
             return might;
         }
+
+        public override int GetHashCode()
+        {
+            return ((int) Race << 2) + (int) Class;
+        }
     }
 }

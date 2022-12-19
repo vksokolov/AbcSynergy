@@ -233,5 +233,17 @@ namespace AbcBestAlgorythm
 
         public Deck Clone()
             => new Deck(Characters);
+
+        public override int GetHashCode()
+        {
+            int result = 0;
+            var array = Characters.OrderByDescending(x => x.Might).ToArray();
+            foreach (var character in array)
+            {
+                result = (result << 4) + character.GetHashCode();
+            }
+
+            return result;
+        }
     }
 }
