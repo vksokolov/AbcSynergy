@@ -16,58 +16,58 @@ namespace AbcBestAlgorythm
                     {
                         {Class.Guardian, new BonusModifierData(new[]
                             {
-                                new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
-                                new BonusModifierItem {Characters = 2, Level = 1, Modifier = 1.1f},
-                                new BonusModifierItem {Characters = 4, Level = 2, Modifier = 1.25f},
+                                new BonusModifierItem {Characters = 0, Level = 0, ModifierType = ModifierType.Everybody, Modifier = 1f},
+                                new BonusModifierItem {Characters = 2, Level = 1, ModifierType = ModifierType.Everybody, Modifier = 1.1f},
+                                new BonusModifierItem {Characters = 4, Level = 2, ModifierType = ModifierType.Everybody, Modifier = 1.25f},
                             })}, {Class.Healer, new BonusModifierData(new[]
                             {
-                                new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
-                                new BonusModifierItem {Characters = 2, Level = 1, Modifier = 1.11f},
-                                new BonusModifierItem {Characters = 3, Level = 2, Modifier = 1.16f},
-                                new BonusModifierItem {Characters = 4, Level = 3, Modifier = 1.22f},
+                                new BonusModifierItem {Characters = 0, Level = 0, ModifierType = ModifierType.Everybody, Modifier = 1f},
+                                new BonusModifierItem {Characters = 2, Level = 1, ModifierType = ModifierType.Everybody, Modifier = 1.11f},
+                                new BonusModifierItem {Characters = 3, Level = 2, ModifierType = ModifierType.Everybody, Modifier = 1.16f},
+                                new BonusModifierItem {Characters = 4, Level = 3, ModifierType = ModifierType.Everybody, Modifier = 1.22f},
                             })}, {Class.Mage, new BonusModifierData(new[]
                             {
-                                new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
-                                new BonusModifierItem {Characters = 2, Level = 1, Modifier = 1.09f},
-                                new BonusModifierItem {Characters = 4, Level = 2, Modifier = 1.23f},
+                                new BonusModifierItem {Characters = 0, Level = 0, ModifierType = ModifierType.Everybody, Modifier = 1f},
+                                new BonusModifierItem {Characters = 2, Level = 1, ModifierType = ModifierType.HasEnergy, Modifier = 1.09f},
+                                new BonusModifierItem {Characters = 4, Level = 2, ModifierType = ModifierType.HasEnergy, Modifier = 1.23f},
                             })}, {Class.Shaman, new BonusModifierData(new[]
                             {
-                                new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
-                                new BonusModifierItem {Characters = 2, Level = 1, Modifier = 1.12f},
-                                new BonusModifierItem {Characters = 3, Level = 2, Modifier = 1.26f},
-                                new BonusModifierItem {Characters = 4, Level = 3, Modifier = 1.52f},
+                                new BonusModifierItem {Characters = 0, Level = 0, ModifierType = ModifierType.Everybody, Modifier = 1f},
+                                new BonusModifierItem {Characters = 2, Level = 1, ModifierType = ModifierType.Everybody, Modifier = 1.12f},
+                                new BonusModifierItem {Characters = 3, Level = 2, ModifierType = ModifierType.Everybody, Modifier = 1.26f},
+                                new BonusModifierItem {Characters = 4, Level = 3, ModifierType = ModifierType.Everybody, Modifier = 1.52f},
                             })}, {Class.Shooter, new BonusModifierData(new[]
                             {
-                                new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
-                                new BonusModifierItem {Characters = 2, Level = 1, Modifier = 1.1f},
-                                new BonusModifierItem {Characters = 4, Level = 2, Modifier = 1.23f},
+                                new BonusModifierItem {Characters = 0, Level = 0, ModifierType = ModifierType.Everybody, Modifier = 1f},
+                                new BonusModifierItem {Characters = 2, Level = 1, ModifierType = ModifierType.TraitOnly, Modifier = 1.1f},
+                                new BonusModifierItem {Characters = 4, Level = 2, ModifierType = ModifierType.TraitOnly, Modifier = 1.23f},
                             })}, {Class.Slayer, new BonusModifierData(new[]
                             {
-                                new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
-                                new BonusModifierItem {Characters = 2, Level = 1, Modifier = 1.1f},
-                                new BonusModifierItem {Characters = 4, Level = 2, Modifier = 1.23f},
+                                new BonusModifierItem {Characters = 0, Level = 0, ModifierType = ModifierType.Everybody, Modifier = 1f},
+                                new BonusModifierItem {Characters = 2, Level = 1, ModifierType = ModifierType.TraitOnly, Modifier = 1.1f},
+                                new BonusModifierItem {Characters = 4, Level = 2, ModifierType = ModifierType.TraitOnly, Modifier = 1.23f},
                             })}, {Class.Soaring, new BonusModifierData(new[]
                             {
-                                new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
-                                new BonusModifierItem {Characters = 2, Level = 1, Modifier = 1.2f},
-                                new BonusModifierItem {Characters = 3, Level = 2, Modifier = 1.27f},
-                                new BonusModifierItem {Characters = 4, Level = 3, Modifier = 1.4f},
+                                new BonusModifierItem {Characters = 0, Level = 0, ModifierType = ModifierType.Everybody, Modifier = 1f},
+                                new BonusModifierItem {Characters = 2, Level = 1, ModifierType = ModifierType.Everybody, Modifier = 1.2f},
+                                new BonusModifierItem {Characters = 3, Level = 2, ModifierType = ModifierType.Everybody, Modifier = 1.27f},
+                                new BonusModifierItem {Characters = 4, Level = 3, ModifierType = ModifierType.Everybody, Modifier = 1.4f},
                             })}, {Class.Thief, new BonusModifierData(new[]
                             {
-                                new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
-                                new BonusModifierItem {Characters = 2, Level = 1, Modifier = 1.23f},
-                                new BonusModifierItem {Characters = 4, Level = 2, Modifier = 1.4f},
+                                new BonusModifierItem {Characters = 0, Level = 0, ModifierType = ModifierType.Everybody, Modifier = 1f},
+                                new BonusModifierItem {Characters = 2, Level = 1, ModifierType = ModifierType.TraitOnly, Modifier = 1.23f},
+                                new BonusModifierItem {Characters = 4, Level = 2, ModifierType = ModifierType.Everybody, Modifier = 1.4f},
                             })}, {Class.Warlock, new BonusModifierData(new[]
                             {
-                                new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
-                                new BonusModifierItem {Characters = 2, Level = 1, Modifier = 1.05f},
-                                new BonusModifierItem {Characters = 3, Level = 2, Modifier = 1.075f},
-                                new BonusModifierItem {Characters = 4, Level = 3, Modifier = 1.12f},
+                                new BonusModifierItem {Characters = 0, Level = 0, ModifierType = ModifierType.Everybody, Modifier = 1f},
+                                new BonusModifierItem {Characters = 2, Level = 1, ModifierType = ModifierType.Everybody, Modifier = 1.05f},
+                                new BonusModifierItem {Characters = 3, Level = 2, ModifierType = ModifierType.Everybody, Modifier = 1.075f},
+                                new BonusModifierItem {Characters = 4, Level = 3, ModifierType = ModifierType.Everybody, Modifier = 1.12f},
                             })}, {Class.Warrior, new BonusModifierData(new[]
                             {
-                                new BonusModifierItem {Characters = 0, Level = 0, Modifier = 1f},
-                                new BonusModifierItem {Characters = 2, Level = 1, Modifier = 1.1f},
-                                new BonusModifierItem {Characters = 4, Level = 2, Modifier = 1.23f},
+                                new BonusModifierItem {Characters = 0, Level = 0, ModifierType = ModifierType.Everybody, Modifier = 1f},
+                                new BonusModifierItem {Characters = 2, Level = 1, ModifierType = ModifierType.TraitOnly, Modifier = 1.1f},
+                                new BonusModifierItem {Characters = 4, Level = 2, ModifierType = ModifierType.TraitOnly, Modifier = 1.23f},
                             })
                         },
                     };

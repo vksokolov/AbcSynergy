@@ -43,5 +43,14 @@ namespace AbcBestAlgorythm
         public int Level;
         public int Characters;
         public float Modifier;
+        public ModifierType ModifierType;
+    }
+    
+    public enum ModifierType
+    {
+        Everybody,
+        Dangerous,
+        TraitOnly,
+        HasEnergy,
     }
 }

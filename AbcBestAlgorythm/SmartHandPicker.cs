@@ -28,7 +28,7 @@ namespace AbcBestAlgorythm
                 Dictionary<Race, int> charactersForNextLevelByRace = new Dictionary<Race, int>();
                 
                 // Class
-                var hand1 = hand;
+                var hand1 = new Deck(hand.Characters);
                 var delta1 = delta;
                 Deck.AllClassValues
                     .ForEach(@class =>
@@ -53,7 +53,7 @@ namespace AbcBestAlgorythm
 
                 
                 // Race
-                var hand2 = hand;
+                var hand2 = new Deck(hand.Characters);
                 var delta2 = delta;
                 Deck.AllRaceValues
                     .ForEach(race =>

@@ -14,10 +14,11 @@ namespace AbcBestAlgorythm
         public readonly Dictionary<Class, (int CharactersInDeck, int CharactersForMaxBonus)> ClassCount;
         public readonly Dictionary<Race, (int CharactersInDeck, int CharactersForMaxBonus)> RaceCount;
         public readonly float TotalMight;
+        public Character MostDangerous;
         
-        public Deck(HashSet<Character> characters)
+        public Deck(IEnumerable<Character> characters)
         {
-            Characters = characters;
+            Characters = characters.ToHashSet();
             ClassCount = GetMaxPotentialClassCount(Characters);
             RaceCount = GetMaxPotentialRaceCount(Characters);
             Characters = Characters
@@ -26,10 +27,9 @@ namespace AbcBestAlgorythm
                         RaceBonusModifier.GetValue(RaceCount[x.Race].CharactersForMaxBonus, x.Race).Modifier *
                         ClassBonusModifier.GetValue(ClassCount[x.Class].CharactersForMaxBonus, x.Class).Modifier)
                     .ToHashSet();
-            
-            TotalMight = Characters.Sum(x => x.Might * 
-                                             RaceBonusModifier.GetValue(RaceCount[x.Race].CharactersForMaxBonus, x.Race).Modifier *
-                                             ClassBonusModifier.GetValue(ClassCount[x.Class].CharactersForMaxBonus, x.Class).Modifier);
+
+            MostDangerous = Characters.OrderByDescending(x => x.Might).First();
+            TotalMight = Characters.Sum(x => x.GetActualMight(this));
         }
         public static Deck GetBestHand(Deck deck, int count)
         {
@@ -157,6 +157,7 @@ namespace AbcBestAlgorythm
                     Class = (Class) random.Next(0, totalClasses),
                     Race = (Race) random.Next(0, totalRaces),
                     Might = random.Next(minMight, maxMight),
+                    HasMana = random.Next(0, 4) == 0,
                 };
                 characters.Add(character);
                 
@@ -188,11 +189,12 @@ namespace AbcBestAlgorythm
                 .ToList()
                 .ForEach(x =>
             {
-                float potentialMight = x.Might * 
-                                     ClassBonusModifier.GetValue(ClassCount[x.Class].CharactersInDeck, x.Class).Modifier *
-                                     RaceBonusModifier.GetValue(RaceCount[x.Race].CharactersInDeck, x.Race).Modifier;
+                float potentialMight = x.GetActualMight(this);
                 log += x +
-                       $"   Actual Might: {potentialMight} ({(potentialMight / x.Might - 1) * 100:0.00}%)\n";
+                       $"   Actual Might: {potentialMight} ({(potentialMight / x.Might - 1) * 100:0.00}%)";
+                if (x == MostDangerous)
+                    log += "\t [Most Dangerous]";
+                log += "\n";
             });
             return log;
         }
@@ -210,7 +212,7 @@ namespace AbcBestAlgorythm
                 if (data.Modifier > 1.00001f)
                 {
                     var bonusPercent = (data.Modifier - 1) * 100;
-                    log += $"{@class}({charactersInDeck}/{data.Characters}): {bonusPercent:0.00}%\n";
+                    log += $"{@class}({charactersInDeck}/{data.Characters}): {bonusPercent:0.00}% ({data.ModifierType})\n";
                 }
             });
             
@@ -222,7 +224,7 @@ namespace AbcBestAlgorythm
                 if (data.Modifier > 1.00001f)
                 {
                     var bonusPercent = (data.Modifier - 1) * 100;
-                    log += $"{race}({charactersInDeck}/{data.Characters}): {bonusPercent:0.00}%\n";
+                    log += $"{race}({charactersInDeck}/{data.Characters}): {bonusPercent:0.00}% ({data.ModifierType})\n";
                 }
             });
 
