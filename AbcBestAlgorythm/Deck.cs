@@ -31,7 +31,7 @@ namespace AbcBestAlgorythm
             MostDangerous = Characters.OrderByDescending(x => x.Might).First();
             TotalMight = Characters.Sum(x => x.GetActualMight(this));
         }
-        public static Deck GetBestHand(Deck deck, int count)
+        public static Deck GetHighestBonusLevelHand(Deck deck, int count)
         {
             List<Deck> decks = new List<Deck>();
             
@@ -175,7 +175,7 @@ namespace AbcBestAlgorythm
             return deck;
         }
 
-        public static Deck TakeBest(Deck deck, int count)
+        public static Deck TakeMightest(Deck deck, int count)
         {
             var characters = deck.Characters.OrderByDescending(c => c.Might).Take(count).ToHashSet();
             return new Deck(characters);
@@ -192,7 +192,7 @@ namespace AbcBestAlgorythm
                 float potentialMight = x.GetActualMight(this);
                 log += x +
                        $"   Actual Might: {potentialMight} ({(potentialMight / x.Might - 1) * 100:0.00}%)";
-                if (x == MostDangerous)
+                if (x.Equals(MostDangerous))
                     log += "\t [Most Dangerous]";
                 log += "\n";
             });
@@ -230,5 +230,8 @@ namespace AbcBestAlgorythm
 
             return log;
         }
+
+        public Deck Clone()
+            => new Deck(Characters);
     }
 }

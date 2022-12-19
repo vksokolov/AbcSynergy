@@ -24,8 +24,8 @@ namespace AbcBestAlgorythm
 
         public int GetActualMight(Deck parentDeck)
         {
-
             var might = Might;
+            var character = this;
 
             Deck.AllRaceValues.ForEach(race =>
             {
@@ -38,15 +38,15 @@ namespace AbcBestAlgorythm
                         raceModifierValue = raceModifier.Modifier;
                         break;
                     case ModifierType.Dangerous:
-                        if (this == parentDeck.MostDangerous)
+                        if (character.Equals(parentDeck.MostDangerous))
                             raceModifierValue = raceModifier.Modifier;
                         break;
                     case ModifierType.TraitOnly:
-                        if (Race == race)
+                        if (character.Race == race)
                             raceModifierValue = raceModifier.Modifier;
                         break;
                     case ModifierType.HasEnergy:
-                        if (HasMana)
+                        if (character.HasMana)
                             raceModifierValue = raceModifier.Modifier;
                         break;
                 }
@@ -66,15 +66,15 @@ namespace AbcBestAlgorythm
                         classModifierValue = classModifier.Modifier;
                         break;
                     case ModifierType.Dangerous:
-                        if (this == parentDeck.MostDangerous)
+                        if (character.Equals(parentDeck.MostDangerous))
                             classModifierValue = classModifier.Modifier;
                         break;
                     case ModifierType.TraitOnly:
-                        if (Class == @class)
+                        if (character.Class == @class)
                             classModifierValue = classModifier.Modifier;
                         break;
                     case ModifierType.HasEnergy:
-                        if (HasMana)
+                        if (character.HasMana)
                             classModifierValue = classModifier.Modifier;
                         break;
                 }

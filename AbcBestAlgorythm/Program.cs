@@ -33,12 +33,12 @@ namespace AbcBestAlgorythm
                 {
                     case 'g':
                     {
-                        deck = GenerateDeck(50, 50, 200, true);
+                        deck = GenerateDeck(200, 50, 200, true);
                         hands.Clear();
-                        hands.Add(GenerateHand(deck.Deck, AlgoType.HighestBonusLevel, handSize, HighestBonusLevelName));
-                        hands.Add(GenerateHand(deck.Deck, AlgoType.Smart, handSize, SmartAlgoName));
-                        hands.Add(GenerateHand(deck.Deck, AlgoType.Combined, handSize, CombinedAlgoName));
-                        hands.Add(GenerateHand(deck.Deck, AlgoType.TopMight, handSize, TopMightDeckName));
+                        hands.Add(GenerateHand(deck.Deck.Clone(), AlgoType.HighestBonusLevel, handSize, HighestBonusLevelName));
+                        hands.Add(GenerateHand(deck.Deck.Clone(), AlgoType.Smart, handSize, SmartAlgoName));
+                        hands.Add(GenerateHand(deck.Deck.Clone(), AlgoType.Combined, handSize, CombinedAlgoName));
+                        hands.Add(GenerateHand(deck.Deck.Clone(), AlgoType.TopMight, handSize, TopMightDeckName));
                         
                         Print(deck, hands);
                         break;
@@ -74,7 +74,7 @@ namespace AbcBestAlgorythm
             {
                 case AlgoType.HighestBonusLevel:
                 {
-                    hand = Deck.TakeBest(deck, handSize);
+                    hand = Deck.GetHighestBonusLevelHand(deck, handSize);
                     break;
                 }
                 case AlgoType.Smart:
@@ -84,13 +84,13 @@ namespace AbcBestAlgorythm
                 }
                 case AlgoType.Combined:
                 {
-                    var preHand = Deck.GetBestHand(deck, handSize);
+                    var preHand = Deck.GetHighestBonusLevelHand(deck, handSize);
                     hand = SmartHandPicker.PickBestHand(deck, handSize, preHand);
                     break;
                 }
                 case AlgoType.TopMight:
                 {
-                    hand = Deck.GetBestHand(deck, handSize);
+                    hand = Deck.TakeMightest(deck, handSize);
                     break;
                 }
                 default:
